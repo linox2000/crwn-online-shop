@@ -6,6 +6,7 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
+
 import FormInput from "../form-input/form-input.component";
 import Button from '../button/button.component';
 
@@ -22,6 +23,7 @@ const SignUpForm = () => {
 
   const { displayName, email, password, confirmPassword } = formFields;
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password != confirmPassword) {
@@ -30,15 +32,24 @@ const SignUpForm = () => {
     }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(
+      const {user} = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(user);
+      
+      
       await createUserDocumentFromAuth(user, { displayName });
+      
       resetFormField();
+      
     } catch (error) {
-      alert("error creating a user");
+      switch(error.code){
+        case'auth/email-already-in-use':
+        alert('error creating a user Email already in Use')
+        break;
+        default:
+          console.log("error creating a user",error.message);
+      }
     }
   };
   const resetFormField = () => {
