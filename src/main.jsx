@@ -5,11 +5,17 @@ import "./index.scss";
 import { BrowserRouter } from "react-router-dom";
 
 import { UserProvider } from "./context/user.context";
+import { ProductProvider } from "./context/product.context";
+import { CartProvider } from "./context/cart.context.";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <ProductProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </ProductProvider>
     </UserProvider>
   </BrowserRouter>
 );
