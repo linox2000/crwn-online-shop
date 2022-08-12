@@ -1,4 +1,5 @@
 import {BackgroundImage,DirectoryItemContainer,Body}from './directory-item.styles.jsx'
+
 import {useNavigate}from 'react-router-dom'
 
 const DirectoryItem = ({category})=>{
@@ -13,7 +14,7 @@ const DirectoryItem = ({category})=>{
         imageUrl={imageUrl}
           
         
-        />
+        /> 
 
         <Body>
           <h2>{title.toUpperCase()} </h2>
