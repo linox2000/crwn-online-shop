@@ -1,4 +1,4 @@
-import './sign-up-form.styles.scss';
+import {SignUpContainer}from './sign-up-form.styles';
 
 import { useState } from "react";
 import {
@@ -61,9 +61,9 @@ const SignUpForm = () => {
     setFormField({ ...formFields, [name]: value });
   };
   return (
-    <div className="sign-up-container">
-        <h2>Don't have an account</h2>
-      <span>Sign up with ypur email and password</span>
+    <SignUpContainer>
+        <h2>Não Tenho uma Conta</h2>
+      <span>Cadastrar Com Email Password</span>
       <form onSubmit={handleSubmit}>
       
         <FormInput label= 'display Name'
@@ -107,7 +107,7 @@ const SignUpForm = () => {
 
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 
