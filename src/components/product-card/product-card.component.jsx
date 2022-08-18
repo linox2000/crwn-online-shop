@@ -5,7 +5,8 @@ import { CartContext } from "../../context/cart.context.";
 
 import Button from "../button/button.component";
 
-const ProductCard = ({ product }) => {
+const 
+ProductCard = ({ product }) => {
   
   const { name, price, imageUrl } = product;
 

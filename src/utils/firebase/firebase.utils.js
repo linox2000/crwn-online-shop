@@ -72,13 +72,7 @@ export const getCategoriesAndDocuments = async () => {
 
   const querySnapShot = await getDocs(q);
 
-  const categoryMap = querySnapShot.docs.reduce((acc, docSnapShot) => {
-    const { title, items } = docSnapShot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
-
-  return categoryMap;
+  return querySnapShot.docs.map((docSnapShot) => docSnapShot.data());
 };
 
 // CREATING A NEW USER
@@ -90,8 +84,6 @@ export const createUserDocumentFromAuth = async (
   const userDocRef = doc(db, "users", userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
-
-  console.log(userSnapshot.exists());
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
