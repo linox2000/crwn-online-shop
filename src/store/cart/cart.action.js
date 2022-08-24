@@ -1,6 +1,8 @@
 import { createAction } from "../../utils/reducer/reducer.utils";
 import { CART_ACTION_TYPES } from "./cart.types";
 
+
+// HELPER FUNCTIONS
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartitem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
@@ -42,6 +44,7 @@ const updateCartItemsReducer = (newCartItems) => {
   }, 0);
 };
 
+//ACTIONS
 export const setIsCardOpen = (isCartOpen) => {
   return createAction(CART_ACTION_TYPES.SET_CART_OPEN, isCartOpen);
 };
@@ -54,10 +57,12 @@ export const addItemToCart = (cartItems, productToAdd) => {
 
 export const removeItemToCart = (cartItems, cartItemToRemove) => {
   const newCartItems = removeCartItem(cartItems, cartItemToRemove);
+
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
 export const clearItemFromCart = (cartItems, cartItemToClear) => {
   const newCartItems = clearCartItem(cartItems, cartItemToClear);
+
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };

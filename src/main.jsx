@@ -4,16 +4,19 @@ import App from "./App";
 import "./index.scss";
 import { BrowserRouter } from "react-router-dom";
 
-import { CartProvider } from "./context/cart.context.";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 
+import { PersistGate } from "redux-persist/lib/integration/react";
+{
+}
+import { persistor } from "./store/store";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <BrowserRouter>
-        <CartProvider>
+    <PersistGate persistor={persistor}>
+      <BrowserRouter>
           <App />
-        </CartProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </PersistGate>
   </Provider>
 );
